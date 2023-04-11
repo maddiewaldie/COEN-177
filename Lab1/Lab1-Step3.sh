@@ -27,7 +27,7 @@ fi
 calculatePerimeterOfCircle() {
     pi=3.14
     perimeter=$(echo "scale=2; $1*$pi*2" | bc -l)
-    echo "The perimeter of the rectangle is $perimeter"
+    echo "The perimeter of the circle is $perimeter"
 }
 
 calculateAreaOfCircle() {
@@ -42,6 +42,14 @@ while [ $response != "No" ]
 do
     echo "Enter radius of circle: "
     read radius
+    zero=0
+
+    if [ $radius -lt $zero ]
+    then
+        echo "Please re-enter the radius. You must input a positive number."
+        read radius
+    fi
+
     calculatePerimeterOfCircle $radius
     calculateAreaOfCircle $radius
     
