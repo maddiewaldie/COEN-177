@@ -30,14 +30,14 @@ int main(int argc, char *argv[]) {
     if (pid){
         // Parent process: pid is > 0
         for (i=0;i<10;i++) {
-            printf("\t \t \t I am the parent process displaying iteration %d \n",i);
+            printf("\t \t \t I am the parent process (PID: %d) displaying iteration %d \n", getpid(), i);
             usleep(n);
         }
     }
     else{
         // Child process: pid = 0
         for (i=0;i<10;i++) {
-            printf("I am the child process displaying iteration %d\n",i);
+            printf("I am the child process (PID: %d) displaying iteration %d\n", getpid(),i);
             usleep(n);
         }
     }
