@@ -4,6 +4,7 @@
         "types.h": "c",
         "unistd.h": "c",
         "stdlib.h": "c",
-        "pthread.h": "c"
+        "pthread.h": "c",
+        "fcntl.h": "c"
     }
 }

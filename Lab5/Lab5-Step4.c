@@ -19,6 +19,14 @@ int buffers[n];
 int add_index, remove_index;
 sem_t *full, *empty, *mutex; 
 
+void cleanup(int sigtype){
+    sem_unlink("full"); 
+    sem_unlink("empty"); 
+    sem_unlink("mutex"); 
+    printf("\n Terminating\n");
+    exit(0);
+}
+
 void* producer() { 
     int added_item;
     do {
@@ -59,6 +67,7 @@ void* consumer() {
 } 
 
 int main() { 
+    signal(SIGINT,cleanup);
     full = sem_open("full", O_CREAT, 0644, 0);
     empty = sem_open("empty", O_CREAT, 0644, n);
     mutex = sem_open("mutex", O_CREAT, 0644, 1);
